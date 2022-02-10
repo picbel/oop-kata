@@ -8,35 +8,56 @@ import lombok.Getter;
 import java.util.Objects;
 
 @Getter
-public abstract class Character extends Stat {
+public abstract class Character<T> extends Stat {
 
     protected int level;
     protected double attackSpeed;
     protected double evasionRate;
-
     protected Weapon weapon;
 
+    protected Character(int hp, int mp, int attackDmg, int defenseDmg, int level, double attackSpeed, double evasionRate, Weapon weapon) {
+        super(hp, mp, attackDmg, defenseDmg);
+        this.level = level;
+        this.attackSpeed = attackSpeed;
+        this.evasionRate = evasionRate;
+        mountWeapon(weapon);
+        this.weapon = weapon;
+    }
+
+    public abstract T useSkill();
+
+    protected abstract T getThis();
+
     public void mountWeapon(Weapon mountWeapon){
+        if (Objects.isNull(mountWeapon)) {return;}
+
         if (Objects.nonNull(this.weapon)) {
             this.weapon.dismount(this);
         }
         mountWeapon.mount(this);
+        this.weapon = mountWeapon;
     }
 
-    public void plusAttackDmg(double per){
+
+
+    public T plusAttackDmg(double per){
         this.attackDmg*=per;
+        return getThis();
     }
 
-    public void minusAttackDmg(double per){
+    public T minusAttackDmg(double per){
         this.attackDmg/=per;
+        return getThis();
     }
 
-    public void plusAttackSpeed(double per){
+    public T plusAttackSpeed(double per){
         attackSpeed*=per;
+        return getThis();
     }
 
-    public void minusAttackSpeed(double per){
+    public T minusAttackSpeed(double per){
         attackSpeed/=per;
+        return getThis();
     }
 
 

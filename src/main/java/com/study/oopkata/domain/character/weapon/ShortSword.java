@@ -2,19 +2,21 @@ package com.study.oopkata.domain.character.weapon;
 
 import com.study.oopkata.domain.character.Character;
 
-import java.util.Objects;
+public class ShortSword extends Weapon{
 
-public class Shortword extends Weapon{
+    public ShortSword() {
+        super("Short Sword");
+    }
 
     @Override
     public void mount(Character character) {
-
+        character.plusAttackDmg(1.05);
 
     }
 
     @Override
     public void dismount(Character character) {
-
+        character.minusAttackDmg(1.05);
     }
 
 }

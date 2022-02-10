@@ -3,6 +3,7 @@ package com.study.oopkata.domain.character;
 
 import com.study.oopkata.domain.character.weapon.Weapon;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Getter
@@ -10,8 +11,8 @@ import lombok.ToString;
 public class Elf extends Character<Elf>{
 
 
-    public Elf(int hp, int mp, int attackDmg, int defenseDmg, int level, double attackSpeed, double evasionRate, Weapon weapon) {
-        super(hp, mp, attackDmg, defenseDmg, level, attackSpeed, evasionRate, weapon);
+    public Elf(@NonNull int level, Weapon weapon) {
+        super(750*level, 700*level, 50*level, 30*level, level, 2, 0.25, weapon);
     }
 
     @Override

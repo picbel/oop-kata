@@ -5,6 +5,7 @@ import com.study.oopkata.domain.Stat;
 import com.study.oopkata.domain.character.weapon.Weapon;
 import lombok.Getter;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 @Getter
@@ -26,6 +27,14 @@ public abstract class Character<T> extends Stat {
 
     public abstract T useSkill();
 
+    public double getAttackSpeed() {
+        return decimalTwoFormat(attackSpeed);
+    }
+    protected double decimalTwoFormat(double value){
+        String pattern = "#.##";
+        DecimalFormat decimalFormat =  new DecimalFormat(pattern);
+        return Double.parseDouble(decimalFormat.format(value));
+    }
     protected abstract T getThis();
 
     public void mountWeapon(Weapon mountWeapon){

@@ -2,15 +2,15 @@ package com.study.oopkata.domain.character;
 
 import com.study.oopkata.domain.character.weapon.Weapon;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.ToString;
 
 @Getter
 @ToString
 public class Orc extends Character<Orc>{
 
-
-    public Orc(int hp, int mp, int attackDmg, int defenseDmg, int level, double attackSpeed, double evasionRate, Weapon weapon) {
-        super(hp, mp, attackDmg, defenseDmg, level, attackSpeed, evasionRate, weapon);
+    public Orc(@NonNull int level, Weapon weapon) {
+        super(1200*level, 300*level, 120*level, 30*level, level, 0.7, 0, weapon);
     }
 
     @Override

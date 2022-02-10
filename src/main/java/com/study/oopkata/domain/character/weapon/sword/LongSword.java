@@ -1,8 +1,9 @@
-package com.study.oopkata.domain.character.weapon;
+package com.study.oopkata.domain.character.weapon.sword;
 
 import com.study.oopkata.domain.character.Character;
+import com.study.oopkata.domain.character.weapon.Weapon;
 
-public class LongSword extends Weapon{
+public class LongSword extends Weapon {
 
     public LongSword() {
         super("Long Sword");

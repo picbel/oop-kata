@@ -17,9 +17,4 @@ public class Human extends Character<Human>{
     public Human useSkill() {
         return this;
     }
-
-    @Override
-    protected Human getThis() {
-        return this;
-    }
 }

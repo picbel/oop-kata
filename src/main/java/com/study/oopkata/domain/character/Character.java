@@ -2,6 +2,7 @@ package com.study.oopkata.domain.character;
 
 
 import com.study.oopkata.domain.Stat;
+import com.study.oopkata.domain.character.weapon.Hand;
 import com.study.oopkata.domain.character.weapon.Weapon;
 import lombok.Getter;
 
@@ -22,54 +23,19 @@ public abstract class Character<T> extends Stat {
         this.attackSpeed = attackSpeed;
         this.evasionRate = evasionRate;
         mountWeapon(weapon);
-        this.weapon = weapon;
     }
 
     public abstract T useSkill();
 
-    public double getAttackSpeed() {
-        return decimalTwoFormat(attackSpeed);
-    }
-    protected double decimalTwoFormat(double value){
-        String pattern = "#.##";
-        DecimalFormat decimalFormat =  new DecimalFormat(pattern);
-        return Double.parseDouble(decimalFormat.format(value));
-    }
-    protected abstract T getThis();
+//    protected abstract T getThis();
 
     public void mountWeapon(Weapon mountWeapon){
-        if (Objects.isNull(mountWeapon)) {return;}
-
-        if (Objects.nonNull(this.weapon)) {
-            this.weapon.dismount(this);
+        if (Objects.isNull(mountWeapon)) {
+            this.weapon = new Hand();
+        }else {
+            this.weapon = mountWeapon;
         }
-        mountWeapon.mount(this);
-        this.weapon = mountWeapon;
     }
-
-
-
-    public T plusAttackDmg(double per){
-        this.attackDmg*=per;
-        return getThis();
-    }
-
-    public T minusAttackDmg(double per){
-        this.attackDmg/=per;
-        return getThis();
-    }
-
-    public T plusAttackSpeed(double per){
-        attackSpeed*=per;
-        return getThis();
-    }
-
-    public T minusAttackSpeed(double per){
-        attackSpeed/=per;
-        return getThis();
-    }
-
-
 
 //    public void levelUp(){
 //        level += 1;
@@ -83,5 +49,32 @@ public abstract class Character<T> extends Stat {
 //        this.attackDmg *= 1.2;
 //    }
 
+    public int getHp() {
+        return hp;
+    }
 
+    public int getMp() {
+        return mp;
+    }
+
+    public int getAttackDmg() {
+        return weapon.calculateAttackDmg(attackDmg);
+    }
+    public double getAttackSpeed() {
+        return decimalTwoFormat(weapon.calculateAttackSpeed(attackSpeed));
+    }
+
+    public double getEvasionRate() {
+        return decimalTwoFormat(evasionRate);
+    }
+
+    public int getDefenseDmg() {
+        return defenseDmg;
+    }
+
+    private double decimalTwoFormat(double value){
+        String pattern = "#.##";
+        DecimalFormat decimalFormat =  new DecimalFormat(pattern);
+        return Double.parseDouble(decimalFormat.format(value));
+    }
 }

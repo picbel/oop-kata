@@ -36,7 +36,7 @@ class OrcTest {
         assertThat(orc.getHp()).isEqualTo(1200);
         assertThat(orc.getWeapon().getName()).isEqualTo("Short Axe");
         assertThat(orc.getAttackDmg()).isEqualTo(132);
-        assertThat(orc.getAttackSpeed()).isEqualTo(0.67);
+        assertThat(orc.getAttackSpeed()).isEqualTo(0.66);
 
 
     }
@@ -53,8 +53,8 @@ class OrcTest {
 
         //then
         assertThat(orc.getWeapon().getName()).isEqualTo("Iron Axe");
-        assertThat(orc.getAttackDmg()).isEqualTo(148);
-        assertThat(orc.getAttackSpeed()).isEqualTo(0.61);
+        assertThat(orc.getAttackDmg()).isEqualTo(144);
+        assertThat(orc.getAttackSpeed()).isEqualTo(0.63);
 
     }
 }

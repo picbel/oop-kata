@@ -20,8 +20,4 @@ public class Elf extends Character<Elf>{
         return null;
     }
 
-    @Override
-    protected Elf getThis() {
-        return this;
-    }
 }

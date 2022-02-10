@@ -18,8 +18,4 @@ public class Orc extends Character<Orc>{
         return null;
     }
 
-    @Override
-    protected Orc getThis() {
-        return this;
-    }
 }

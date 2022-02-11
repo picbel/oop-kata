@@ -12,14 +12,12 @@ import java.util.Objects;
 @Getter
 public abstract class Character<T> extends Stat {
 
-    protected int level;
     protected double attackSpeed;
     protected double evasionRate;
     protected Weapon weapon;
 
-    protected Character(int hp, int mp, int attackDmg, int defenseDmg, int level, double attackSpeed, double evasionRate, Weapon weapon) {
-        super(hp, mp, attackDmg, defenseDmg);
-        this.level = level;
+    protected Character(int level,int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon) {
+        super(level,hp, mp, attackDmg, defenseDmg);
         this.attackSpeed = attackSpeed;
         this.evasionRate = evasionRate;
         mountWeapon(weapon);
@@ -49,27 +47,28 @@ public abstract class Character<T> extends Stat {
 //        this.attackDmg *= 1.2;
 //    }
 
+    @Override
     public int getHp() {
         return hp;
     }
-
+    @Override
     public int getMp() {
         return mp;
     }
-
+    @Override
     public int getAttackDmg() {
         return weapon.calculateAttackDmg(attackDmg);
     }
+
+    @Override
+    public int getDefenseDmg() { return defenseDmg;}
+
     public double getAttackSpeed() {
         return decimalTwoFormat(weapon.calculateAttackSpeed(attackSpeed));
     }
 
     public double getEvasionRate() {
         return decimalTwoFormat(evasionRate);
-    }
-
-    public int getDefenseDmg() {
-        return defenseDmg;
     }
 
     private double decimalTwoFormat(double value){

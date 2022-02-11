@@ -10,7 +10,7 @@ import lombok.ToString;
 public class Orc extends Character<Orc>{
 
     public Orc(@NonNull int level, Weapon weapon) {
-        super(1200*level, 300*level, 120*level, 30*level, level, 0.7, 0, weapon);
+        super( level, 1200*level, 300*level, 120*level, 30*level,0.7, 0, weapon);
     }
 
     @Override

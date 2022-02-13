@@ -11,6 +11,7 @@ public class ElfSkills extends Skills{
         isAvailableMp(characters, 300);
         skillEndTimeMap.put("elusion", LocalDateTime.now().plusSeconds(10));
         characters.multiplyEvasionRate(1.3);
+        characters.minusMp(300);
     }
 
     public void endElusion(Elf characters) throws Exception{

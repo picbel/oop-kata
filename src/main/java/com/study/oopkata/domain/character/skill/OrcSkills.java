@@ -11,6 +11,7 @@ public class OrcSkills extends Skills{
         skillEndTimeMap.put("anger", LocalDateTime.now().plusSeconds(10));
         characters.multiplyAttackDmg(1.5);
         characters.multiplyDefenseDmg(1 - 0.1);
+        characters.minusMp(300);
     }
 
     public void endAnger(Orc characters) throws Exception{

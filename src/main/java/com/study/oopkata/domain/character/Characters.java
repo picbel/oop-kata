@@ -47,6 +47,10 @@ public abstract class Characters extends Stat {
         return level >= 99;
     }
 
+    public boolean isDie(){
+        return hp <= 0;
+    }
+
     public void mountWeapon(Weapon mountWeapon) throws Exception {
         if (Objects.isNull(mountWeapon)) {
             this.weapon = new Hand();

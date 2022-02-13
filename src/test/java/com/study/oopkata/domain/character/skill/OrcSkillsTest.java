@@ -45,4 +45,17 @@ class OrcSkillsTest {
         assertThat(orc.getDefenseDmg()).isEqualTo(30);
     }
 
+    @DisplayName("Orc 스킬 궁극기 사용 테스트")
+    @Test
+    void ultimate() throws Exception {
+        //given
+        OrcSkills skill = new OrcSkills();
+        orc = new Orc(100,new ShortAxe());
+        //when
+        skill.ultimate(orc);
+        //then
+        assertThat(orc.getAttackDmg()).isEqualTo(66000);
+    }
+
+
 }

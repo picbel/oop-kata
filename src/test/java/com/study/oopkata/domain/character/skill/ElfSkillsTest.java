@@ -43,4 +43,16 @@ class ElfSkillsTest {
         assertThat(elf.getEvasionRate()).isEqualTo(0.25);
     }
 
+    @DisplayName("Elf 스킬 궁극기 사용 테스트")
+    @Test
+    void ultimate() throws Exception {
+        //given
+        ElfSkills skill = new ElfSkills();
+        elf = new Elf(100,new ShortBow());
+        //when
+        skill.ultimate(elf);
+        //then
+        assertThat(elf.getAttackSpeed()).isEqualTo(10.5);
+    }
+
 }

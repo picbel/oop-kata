@@ -11,12 +11,13 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 @Getter
-public abstract class Characters<T> extends Stat {
+public abstract class Characters extends Stat {
 
     protected double attackSpeed;
     protected double evasionRate;
     protected Weapon weapon;
     protected Skills skill;
+    protected boolean hitStatus = true;
 
     protected Characters(int level, int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon, Skills skill) throws Exception {
         super(level,hp, mp, attackDmg, defenseDmg);
@@ -42,9 +43,9 @@ public abstract class Characters<T> extends Stat {
     @Override
     public int getDefenseDmg() { return defenseDmg;}
 
-    public abstract T useSkill();
-//
-//    public abstract T getThis();
+    public boolean isUsedUltimate(){
+        return level >= 99;
+    }
 
     public void mountWeapon(Weapon mountWeapon) throws Exception {
         if (Objects.isNull(mountWeapon)) {
@@ -67,16 +68,18 @@ public abstract class Characters<T> extends Stat {
     public void minusMp(int useMp){
         this.mp -= useMp;
     }
-    public void multiplyAttackDmgPer(double plusPer){
+
+    public void multiplyAttackDmg(double plusPer){
         this.attackDmg *= plusPer;
     }
-    public void divideAttackDmgPer(double minusPer){
+    public void divideAttackDmg(double minusPer){
         this.attackDmg /= minusPer;
     }
-    public void multiplyDefenseDmgPer(double plusPer){
+
+    public void multiplyDefenseDmg(double plusPer){
         this.defenseDmg *= plusPer;
     }
-    public void divideDefenseDmgPer(double minusPer){
+    public void divideDefenseDmg(double minusPer){
         this.defenseDmg /= minusPer;
     }
     
@@ -87,12 +90,23 @@ public abstract class Characters<T> extends Stat {
         this.evasionRate /= plusPer;
     }
 
+    public void multiplyAttackSpeed(double plusPer){
+        this.attackSpeed *= plusPer;
+    }
+    public void divideAttackSpeed(double plusPer){
+        this.attackSpeed /= plusPer;
+    }
+
     public double getAttackSpeed() {
         return decimalTwoFormat(weapon.calculateAttackSpeed(attackSpeed));
     }
 
     public double getEvasionRate() {
         return decimalTwoFormat(evasionRate);
+    }
+
+    public void changeHitStatus(boolean status){
+        this.hitStatus = status;
     }
 
     private double decimalTwoFormat(double value){

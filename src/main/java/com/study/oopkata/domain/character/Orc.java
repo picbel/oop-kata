@@ -8,15 +8,10 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class Orc extends Characters<Orc> {
+public class Orc extends Characters {
 
     public Orc(@NonNull int level, Weapon weapon) throws Exception {
         super( level, 1200*level, 300*level, 120*level, 30*level,0.7, 0, weapon, new OrcSkills());
-    }
-
-    @Override
-    public Orc useSkill() {
-        return null;
     }
 
 }

@@ -105,4 +105,40 @@ class HumanSkillsTest {
         assertThat(human.getDefenseDmg()).isEqualTo(50);
     }
 
+    @DisplayName("human 스킬 궁극기 사용 테스트")
+    @Test
+    void ultimate() throws Exception {
+        //given
+        HumanSkills skill = new HumanSkills();
+        Human human = new Human(100,new ShortSword());
+        //when
+        skill.ultimate(human);
+        //then
+        assertThat(human.isHitStatus()).isTrue();
+    }
+
+    @DisplayName("human 스킬 궁극기 종료 테스트")
+    @Test
+    void ultimate_2() throws Exception {
+        //given
+        HumanSkills skill = new HumanSkills();
+        Human human = new Human(100,new ShortSword());
+        //when
+        skill.ultimate(human);
+        skill.endUltimate(human);
+        //then
+        assertThat(human.isHitStatus()).isFalse();
+    }
+
+    @DisplayName("궁극기 1level 사용 테스트 결과 실패")
+    @Test
+    void ultimate_false() throws Exception {
+        //given
+        HumanSkills skill = new HumanSkills();
+        //when
+
+        //then
+        assertThatThrownBy(() -> skill.ultimate(human)).hasMessage("99 Level부터 궁극기를 사용 할 수 있습니다.");
+    }
+
 }

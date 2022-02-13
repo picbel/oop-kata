@@ -1,7 +1,4 @@
 package com.study.oopkata.usecase;
 
-public class Player {
-
-
-
+public class Enemy {
 }

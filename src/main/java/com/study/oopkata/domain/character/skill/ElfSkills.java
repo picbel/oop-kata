@@ -15,7 +15,6 @@ public class ElfSkills extends Skills{
     }
 
     public void endElusion(Elf characters) throws Exception{
-        isEndSkill("elusion");
         characters.divideEvasionRate(1.3);
     }
 
@@ -38,7 +37,6 @@ public class ElfSkills extends Skills{
     }
 
     public void endRapid(Characters characters) throws Exception {
-        isEndSkill("rapid");
         characters.divideAttackSpeed(5);
     }
 }

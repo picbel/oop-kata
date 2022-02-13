@@ -5,18 +5,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Log4j2
-class CalculateRandomTest {
+class randomEventUtilTest {
 
     @DisplayName("1~100이하의 난수 생성기")
     @Test
     void generateRandomInt() {
-        CalculateRandom random = new CalculateRandom();
-
         for (int i = 0; i < 1000; i++) {
-            int randomInt = random.generateRandomInt();
+            int randomInt = randomEventUtil.generateRandomInt();
             assertThat(randomInt > 0).isTrue();
             assertThat(randomInt < 101).isTrue();
         }
@@ -29,10 +26,9 @@ class CalculateRandomTest {
         //given
         int trueCount = 0;
         int falseCount = 0;
-        CalculateRandom random = new CalculateRandom();
         //when
         for (int i = 0; i < 100000; i++) {
-            boolean b = random.randomEventResult(0.8);
+            boolean b = randomEventUtil.randomEventResult(0.8);
             if (b){
                 trueCount++;
             }else {
@@ -51,9 +47,9 @@ class CalculateRandomTest {
     @Test
     void persentTestError() throws Exception {
         //given
-        CalculateRandom random = new CalculateRandom();
+
         //when
-        boolean b = random.randomEventResult(0);
+        boolean b = randomEventUtil.randomEventResult(0);
         //then
         assertThat(b).isFalse();
 
@@ -62,9 +58,9 @@ class CalculateRandomTest {
     @Test
     void persentTestError_2() throws Exception {
         //given
-        CalculateRandom random = new CalculateRandom();
+
         //when
-        boolean b = random.randomEventResult(1);
+        boolean b = randomEventUtil.randomEventResult(1);
         //then
         assertThat(b).isTrue();
 

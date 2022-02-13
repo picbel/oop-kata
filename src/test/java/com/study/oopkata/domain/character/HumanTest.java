@@ -10,7 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class HumanTest {
     @DisplayName("human 캐릭터 생성 무기 미착용 상태")
     @Test
-    void getHumanCharacter(){
+    void getHumanCharacter() throws Exception {
         //given
         int level = 1;
 
@@ -24,7 +24,7 @@ class HumanTest {
 
     @DisplayName("human 캐릭터 생성 무기는 short sword")
     @Test
-    void getHumanCharacter_2(){
+    void getHumanCharacter_2() throws Exception{
         //given
         int level = 1;
 
@@ -41,7 +41,7 @@ class HumanTest {
 
     @DisplayName("human 캐릭터 생성 무기 변경 Short Sword -> Long Sword")
     @Test
-    void changeWeapon(){
+    void changeWeapon() throws Exception {
         //given
         int level = 1;
 

@@ -10,7 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class ElfTest {
     @DisplayName("elf 캐릭터 생성 무기 미착용 상태")
     @Test
-    void getElfCharacter(){
+    void getElfCharacter() throws Exception{
         //given
         int level = 1;
 
@@ -24,7 +24,7 @@ class ElfTest {
 
     @DisplayName("elf 캐릭터 생성 무기는 short Bow")
     @Test
-    void getElfCharacter_2(){
+    void getElfCharacter_2() throws Exception{
         //given
         int level = 1;
 
@@ -41,7 +41,7 @@ class ElfTest {
 
     @DisplayName("elf 캐릭터 생성 무기 변경 Short Bow -> Iron Bow")
     @Test
-    void changeWeapon(){
+    void changeWeapon() throws Exception {
         //given
         int level = 1;
 
@@ -54,4 +54,5 @@ class ElfTest {
         assertThat(elf.getAttackSpeed()).isEqualTo(2.2);
 
     }
+
 }

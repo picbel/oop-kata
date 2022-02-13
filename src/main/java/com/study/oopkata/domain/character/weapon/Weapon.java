@@ -1,5 +1,6 @@
 package com.study.oopkata.domain.character.weapon;
 
+import com.study.oopkata.domain.character.Characters;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,8 @@ public abstract class Weapon {
 
     double attackSpeedIncreasePer;
 
+    public abstract boolean isMountable(Characters characters);
+
     public int calculateAttackDmg(int attackDmg){
         return (int) (attackDmg*attackDmgIncreasePer);
     }
@@ -20,6 +23,5 @@ public abstract class Weapon {
     public double calculateAttackSpeed(double attackSpeed){
         return (attackSpeed*attackSpeedIncreasePer);
     }
-
 
 }

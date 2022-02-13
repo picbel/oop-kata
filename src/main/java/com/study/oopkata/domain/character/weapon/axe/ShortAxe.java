@@ -2,6 +2,7 @@ package com.study.oopkata.domain.character.weapon.axe;
 
 import com.study.oopkata.domain.character.weapon.Weapon;
 
+
 public class ShortAxe extends Weapon {
 
     public ShortAxe() {

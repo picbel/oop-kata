@@ -7,15 +7,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Log4j2
-class RandomEventTest {
+class RandomEventUtilTest {
 
-    RandomEvent randomEvent = new RandomEvent();
 
     @DisplayName("1~100이하의 난수 생성기")
     @Test
     void generateRandomInt() {
         for (int i = 0; i < 1000; i++) {
-            int randomInt = randomEvent.generateRandomInt();
+            int randomInt = RandomEventUtil.generateRandomInt();
             assertThat(randomInt > 0).isTrue();
             assertThat(randomInt < 101).isTrue();
         }
@@ -30,7 +29,7 @@ class RandomEventTest {
         int falseCount = 0;
         //when
         for (int i = 0; i < 100000; i++) {
-            boolean b = randomEvent.randomEventResult(0.8);
+            boolean b = RandomEventUtil.randomEventResult(0.8);
             if (b){
                 trueCount++;
             }else {
@@ -51,7 +50,7 @@ class RandomEventTest {
         //given
 
         //when
-        boolean b = randomEvent.randomEventResult(0);
+        boolean b = RandomEventUtil.randomEventResult(0);
         //then
         assertThat(b).isFalse();
 
@@ -62,7 +61,7 @@ class RandomEventTest {
         //given
 
         //when
-        boolean b = randomEvent.randomEventResult(1);
+        boolean b = RandomEventUtil.randomEventResult(1);
         //then
         assertThat(b).isTrue();
 

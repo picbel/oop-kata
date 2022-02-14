@@ -2,17 +2,14 @@ package com.study.oopkata.usecase;
 
 import com.study.oopkata.domain.Stat;
 import com.study.oopkata.domain.character.Characters;
-import com.study.oopkata.util.RandomEvent;
+import com.study.oopkata.util.RandomEventUtil;
 
 public class Player implements Behavior{
 
     Characters characters; // 팩토리 메서드 예정
 
-    RandomEvent randomEvent;
-
-    public Player(Characters characters, RandomEvent randomEvent) {
+    public Player(Characters characters) {
         this.characters = characters;
-        this.randomEvent = randomEvent;
     }
 
     @Override
@@ -32,6 +29,6 @@ public class Player implements Behavior{
 
     @Override
     public boolean isAttackMiss() {
-        return randomEvent.randomEventResult(characters.getEvasionRate());
+        return RandomEventUtil.randomEventResult(characters.getEvasionRate());
     }
 }

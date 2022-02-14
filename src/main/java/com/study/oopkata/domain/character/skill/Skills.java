@@ -23,13 +23,9 @@ public abstract class Skills {
     }
 
     protected boolean isEndSkill(String skillName) throws Exception {
-        return isEndSkill(skillName,LocalDateTime.now());
-    }
-
-    protected boolean isEndSkill(String skillName,LocalDateTime now) throws Exception {
         if (!skillEndTimeMap.containsKey(skillName)){throw new Exception("사용한적 없는 스킬입니다.");}
 
-        boolean after = now.isAfter(skillEndTimeMap.get(skillName));
+        boolean after = LocalDateTime.now().isAfter(skillEndTimeMap.get(skillName));
         if (after){deleteSkillEndTime(skillName);}
         return after;
     }

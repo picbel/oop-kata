@@ -5,11 +5,14 @@ import com.study.oopkata.domain.character.weapon.sword.ShortSword;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.spy;
 
+@ExtendWith(MockitoExtension.class)
 class HumanSkillsTest {
     Human human;
 
@@ -66,12 +69,17 @@ class HumanSkillsTest {
     @Test
     void ultimate_2() throws Exception {
         //given
-        HumanSkills skill = new HumanSkills();
         Human human = new Human(100,new ShortSword());
-        //when
+        HumanSkills skill = spy(HumanSkills.class);
+
         skill.ultimate(human);
-        boolean endSkill = skill.isEndSkill("invincible", LocalDateTime.now().plusSeconds(10));
+        given(skill.isEndSkill("invincible"))
+                .willReturn(true);
+
+        //when
+        boolean endSkill = skill.isEndSkill("invincible");
         skill.endUltimate(human);
+
         //then
         assertThat(endSkill).isTrue();
         assertThat(human.isHitStatus()).isFalse();

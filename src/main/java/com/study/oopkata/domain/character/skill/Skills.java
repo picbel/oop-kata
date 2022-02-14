@@ -9,6 +9,7 @@ public abstract class Skills {
 
     protected HashMap<String, LocalDateTime> skillEndTimeMap = new HashMap<>();
 
+    //Todo isUsedUltimate AOP 적용하기
     public abstract void ultimate(Characters characters) throws Exception;
 
     public abstract void endUltimate(Characters characters) throws Exception;

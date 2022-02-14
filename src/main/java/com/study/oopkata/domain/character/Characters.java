@@ -20,6 +20,7 @@ public abstract class Characters extends Stat {
     protected boolean hitStatus = true;
 
     protected Characters(int level, int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon, Skills skill) throws Exception {
+        //Todo 0레벨 검사하기 AOP로 !
         super(level,hp, mp, attackDmg, defenseDmg);
         this.attackSpeed = attackSpeed;
         this.evasionRate = evasionRate;
@@ -104,7 +105,6 @@ public abstract class Characters extends Stat {
     public double getAttackSpeed() {
         return decimalTwoFormat(weapon.calculateAttackSpeed(attackSpeed));
     }
-
     public double getEvasionRate() {
         return decimalTwoFormat(evasionRate);
     }

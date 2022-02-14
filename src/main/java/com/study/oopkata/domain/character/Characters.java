@@ -70,6 +70,8 @@ public abstract class Characters extends Stat {
     public void plusHp(int plus){
         this.hp += plus;
     }
+    public void minusHp(int minus) {this.hp -= minus;}
+
     public void minusMp(int useMp){
         this.mp -= useMp;
     }

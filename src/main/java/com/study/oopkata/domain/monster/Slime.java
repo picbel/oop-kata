@@ -6,7 +6,7 @@ public class Slime extends Monster{
         super(1,100, 0, 300, 10,0.3);
     }
     public Slime(int level) {
-        super(level,100*level, 0, 300*level, 10*level, 0.7);
+        super(level,100*level, 0, 300*level, 25*level, 0.7);
     }
 
     public void counterAttack(){

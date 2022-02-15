@@ -10,7 +10,7 @@ public interface Behavior {
 
     boolean attackDelay();
 
-    <T extends Stat> void beHit(T attacker);
+    void beHit(int attackerDamage);
 
     default int calculateDamage(int attackerDmage, Stat defender){
         return attackerDmage - defender.getDefenseDmg();

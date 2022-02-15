@@ -24,35 +24,13 @@ class EnemyTest {
         given(slime.isCounter())
                 .willReturn(false);
         //when
-
-        enemy.beHit(human);
-
+        enemy.beHit(human.getAttackDmg());
 
         //then
         assertThat(slime.getHp()).isEqualTo(20);
-
+        assertThat(human.getHp()).isEqualTo(1000);
     }
 
-    @DisplayName("슬라임 피격시 반격 테스트")
-    @Test
-    void beHit_2() throws Exception {
-        //given
-        Human human = new Human(1, new ShortSword());
-        Slime slime = spy(new Slime(1));
 
-        Enemy enemy = new Enemy(slime);
-
-        given(slime.isCounter())
-                .willReturn(true);
-        //when
-
-        enemy.beHit(human);
-
-
-        //then
-        assertThat(slime.getHp()).isEqualTo(20);
-        assertThat(human.getHp()).isEqualTo(840);
-
-    }
 
 }

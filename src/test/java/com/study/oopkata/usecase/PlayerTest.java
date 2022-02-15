@@ -45,10 +45,31 @@ class PlayerTest {
                 .willReturn(false);
 
         //when
-        player.beHit(slime);
+        player.beHit(slime.getAttackDmg());
 
         //then
         assertThat(human.getHp()).isEqualTo(750);
+
+    }
+
+    @DisplayName("플레이어 몬스터 공격시 반격 테스트")
+    @Test
+    void attack() throws Exception {
+        //given
+        Human human = new Human(1, new ShortSword());
+        Slime slime = spy(new Slime(1));
+
+        Player player = new Player(human);
+        Enemy enemy = new Enemy(slime);
+
+        given(slime.isCounter())
+                .willReturn(true);
+        //when
+        player.attack(enemy);
+
+        //then
+        assertThat(slime.getHp()).isEqualTo(20);
+        assertThat(human.getHp()).isEqualTo(840);
 
     }
 

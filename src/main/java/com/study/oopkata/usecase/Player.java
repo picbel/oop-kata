@@ -18,12 +18,9 @@ public class Player implements Behavior{
     }
 
     @Override
-    public boolean beHit(Stat attacker) {
-        if (isAttackMiss()){
-            return true;
-        }else{
-            characters.minusHp(calculateDamage(attacker, characters));
-            return false;
+    public void beHit(Stat attacker) {
+        if (!isAttackMiss()){
+            characters.minusHp(calculateDamage(attacker.getAttackDmg(), characters));
         }
     }
 

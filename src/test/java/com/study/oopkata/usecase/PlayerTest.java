@@ -24,7 +24,7 @@ class PlayerTest {
 
         //when
         Player player = new Player(human);
-        int damage = player.calculateDamage(human, slime);
+        int damage = player.calculateDamage(human.getAttackDmg(), slime);
 
         //then
         // 휴먼 attack / 슬라임 defense
@@ -34,7 +34,7 @@ class PlayerTest {
 
     @DisplayName("플레이어 피격 테스트")
     @Test
-    void defend() throws Exception {
+    void beHit() throws Exception {
         //given
         Human human = new Human(1, new ShortSword());
         Slime slime = new Slime(1);
@@ -45,11 +45,9 @@ class PlayerTest {
                 .willReturn(false);
 
         //when
-
-        boolean defend = player.beHit(slime);
+        player.beHit(slime);
 
         //then
-        assertThat(defend).isFalse();
         assertThat(human.getHp()).isEqualTo(750);
 
     }

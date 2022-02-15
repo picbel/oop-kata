@@ -1,6 +1,8 @@
 package com.study.oopkata.usecase;
 
 import com.study.oopkata.domain.Stat;
+import com.study.oopkata.domain.character.Characters;
+import com.study.oopkata.domain.monster.Monster;
 
 public interface Behavior {
 
@@ -8,10 +10,10 @@ public interface Behavior {
 
     boolean attackDelay();
 
-    boolean beHit(Stat attacker);
+    <T extends Stat> void beHit(T attacker);
 
-    default int calculateDamage(Stat attacker, Stat defender){
-        return attacker.getAttackDmg() - defender.getDefenseDmg();
+    default int calculateDamage(int attackerDmage, Stat defender){
+        return attackerDmage - defender.getDefenseDmg();
     }
 
     // 공격 회피 등 캐릭터와 몬스터를 조합하는 시스템은 Behavior 구현체에서 구현

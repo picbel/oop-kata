@@ -2,7 +2,7 @@ package com.study.oopkata.usecase;
 
 import com.study.oopkata.domain.Stat;
 import com.study.oopkata.domain.monster.Monster;
-import com.study.oopkata.domain.monster.Slime;
+
 
 public class Enemy implements Behavior{
 
@@ -17,9 +17,14 @@ public class Enemy implements Behavior{
         return false;
     }
 
+    // 방어 따로 공격따로로 해야하나...? 고민중
     @Override
-    public boolean beHit(Stat attacker) {
-        monster.minusHp(calculateDamage(attacker, monster));
-        return false;
+    public <T extends Stat> void beHit(T attacker) {
+        monster.minusHp(calculateDamage(attacker.getAttackDmg(), monster));
+        if (monster.isCounter()){
+            attacker.minusHp(calculateDamage(monster.getCountAttackDamage(),attacker));
+        }
     }
+
+
 }

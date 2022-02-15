@@ -1,6 +1,7 @@
 package com.study.oopkata.domain.monster;
 
 import com.study.oopkata.domain.Stat;
+import com.study.oopkata.util.RandomEventUtil;
 import lombok.Getter;
 
 @Getter
@@ -11,5 +12,11 @@ public abstract class Monster extends Stat {
         this.countAttackRate = countAttackRate;
     }
 
+    public boolean isCounter(){
+        return RandomEventUtil.randomEventResult(countAttackRate);
+    }
 
+    public int getCountAttackDamage(){
+        return (int) (getAttackDmg()*0.7);
+    }
 }

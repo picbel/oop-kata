@@ -20,7 +20,6 @@ public abstract class Characters extends Stat {
     protected boolean hitStatus = true;
 
     protected Characters(int level, int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon, Skills skill) throws Exception {
-        //Todo 0레벨 검사하기 AOP로 !
         super(level,hp, mp, attackDmg, defenseDmg);
         this.attackSpeed = attackSpeed;
         this.evasionRate = evasionRate;
@@ -66,15 +65,6 @@ public abstract class Characters extends Stat {
 //    public void levelUp(){
 //        level += 1;
 //    }
-
-    public void plusHp(int plus){
-        this.hp += plus;
-    }
-    public void minusHp(int minus) {this.hp -= minus;}
-
-    public void minusMp(int useMp){
-        this.mp -= useMp;
-    }
 
     public void multiplyAttackDmg(double plusPer){
         this.attackDmg *= plusPer;

@@ -27,11 +27,12 @@ class PlayerTest {
         int damage = player.calculateDamage(human, slime);
 
         //then
+        // 휴먼 attack / 슬라임 defense
         // 휴먼 공격력 105, 슬라임 방어력 25
-        assertThat(damage).isEqualTo(80);
+        assertThat(damage).isEqualTo(80); // 슬라임이 입는 데미지
     }
 
-    @DisplayName("피격당했을때 테스트")
+    @DisplayName("플레이어 피격 테스트")
     @Test
     void defend() throws Exception {
         //given
@@ -45,7 +46,7 @@ class PlayerTest {
 
         //when
 
-        boolean defend = player.defend(slime);
+        boolean defend = player.beHit(slime);
 
         //then
         assertThat(defend).isFalse();

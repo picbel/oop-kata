@@ -8,9 +8,7 @@ public interface Behavior {
 
     boolean attackDelay();
 
-    boolean defend(Stat stat);
-
-    boolean isAttackMiss();
+    boolean beHit(Stat attacker);
 
     default int calculateDamage(Stat attacker, Stat defender){
         return attacker.getAttackDmg() - defender.getDefenseDmg();

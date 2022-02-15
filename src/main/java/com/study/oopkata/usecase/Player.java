@@ -18,7 +18,7 @@ public class Player implements Behavior{
     }
 
     @Override
-    public boolean defend(Stat attacker) {
+    public boolean beHit(Stat attacker) {
         if (isAttackMiss()){
             return true;
         }else{
@@ -27,7 +27,6 @@ public class Player implements Behavior{
         }
     }
 
-    @Override
     public boolean isAttackMiss() {
         return RandomEventUtil.randomEventResult(characters.getEvasionRate());
     }

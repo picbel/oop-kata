@@ -55,4 +55,32 @@ class ElfTest {
 
     }
 
+    @DisplayName("elf 캐릭터 레벨업")
+    @Test
+    void levelUp() throws Exception {
+        //given
+        int level = 1;
+        Elf elf = new Elf(level,new ShortBow());
+        //when
+        elf.levelUp(1);
+        //then
+        assertThat(elf.getLevel()).isEqualTo(2);
+        assertThat(elf.getHp()).isEqualTo(1500);
+        assertThat(elf.getAttackDmg()).isEqualTo(100);
+    }
+
+    @DisplayName("elf 캐릭터 2 레벨업")
+    @Test
+    void levelUp_2() throws Exception {
+        //given
+        int level = 1;
+        Elf elf = new Elf(level,new ShortBow());
+        //when
+        elf.levelUp(2);
+        //then
+        assertThat(elf.getLevel()).isEqualTo(3);
+        assertThat(elf.getHp()).isEqualTo(2250);
+        assertThat(elf.getAttackDmg()).isEqualTo(150);
+    }
+
 }

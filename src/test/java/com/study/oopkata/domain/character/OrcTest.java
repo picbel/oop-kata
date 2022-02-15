@@ -57,4 +57,18 @@ class OrcTest {
         assertThat(orc.getAttackSpeed()).isEqualTo(0.63);
 
     }
+
+    @DisplayName("Orc 캐릭터 레벨업")
+    @Test
+    void levelUp() throws Exception {
+        //given
+        int level = 1;
+        Orc orc = new Orc(level,new ShortAxe());
+        //when
+        orc.levelUp(1);
+        //then
+        assertThat(orc.getLevel()).isEqualTo(2);
+        assertThat(orc.getHp()).isEqualTo(2400);
+        assertThat(orc.getAttackDmg()).isEqualTo(264);
+    }
 }

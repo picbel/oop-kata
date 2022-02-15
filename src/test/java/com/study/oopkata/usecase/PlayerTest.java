@@ -59,11 +59,15 @@ class PlayerTest {
         Human human = new Human(1, new ShortSword());
         Slime slime = spy(new Slime(1));
 
-        Player player = new Player(human);
+        Player player =  spy(new Player(human));
         Enemy enemy = new Enemy(slime);
 
         given(slime.isCounter())
                 .willReturn(true);
+
+        given(player.isAttackMiss())
+                .willReturn(false);
+
         //when
         player.attack(enemy);
 

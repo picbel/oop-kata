@@ -6,10 +6,12 @@ import com.study.oopkata.domain.character.skill.Skills;
 import com.study.oopkata.domain.character.weapon.Hand;
 import com.study.oopkata.domain.character.weapon.Weapon;
 import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 
 import java.text.DecimalFormat;
 import java.util.Objects;
 
+@Log4j2
 @Getter
 public abstract class Characters extends Stat {
 
@@ -19,14 +21,16 @@ public abstract class Characters extends Stat {
     protected Skills skill;
     protected boolean hitStatus = true;
 
-    protected Characters(int level, int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon, Skills skill) throws Exception {
-        super(level,hp, mp, attackDmg, defenseDmg);
+    protected Characters(String race,int level, int hp, int mp, int attackDmg, int defenseDmg, double attackSpeed, double evasionRate, Weapon weapon, Skills skill) throws Exception {
+        super(race, level,hp, mp, attackDmg, defenseDmg);
         this.attackSpeed = attackSpeed;
         this.evasionRate = evasionRate;
         this.skill = skill;
         mountWeapon(weapon);
 
     }
+
+    public abstract void levelUp(int up);
 
     @Override
     public int getHp() {
@@ -62,10 +66,9 @@ public abstract class Characters extends Stat {
         }
     }
 
-//    public void levelUp(){
-//        level += 1;
-//    }
-
+    public void plusAttackDmg(int plus){
+        this.attackDmg += plus;
+    }
     public void multiplyAttackDmg(double plusPer){
         this.attackDmg *= plusPer;
     }
@@ -73,6 +76,7 @@ public abstract class Characters extends Stat {
         this.attackDmg /= minusPer;
     }
 
+    public void plusDefenseDmg(int plus){ this.defenseDmg += plus; }
     public void multiplyDefenseDmg(double plusPer){
         this.defenseDmg *= plusPer;
     }
@@ -110,5 +114,7 @@ public abstract class Characters extends Stat {
         DecimalFormat decimalFormat =  new DecimalFormat(pattern);
         return Double.parseDouble(decimalFormat.format(value));
     }
+
+
 
 }

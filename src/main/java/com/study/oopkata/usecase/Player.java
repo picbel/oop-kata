@@ -1,6 +1,5 @@
 package com.study.oopkata.usecase;
 
-import com.study.oopkata.domain.Stat;
 import com.study.oopkata.domain.character.Characters;
 import com.study.oopkata.util.RandomEventUtil;
 
@@ -14,11 +13,6 @@ public class Player implements Behavior{
 
     public Player(Characters characters) {
         this.characters = characters;
-    }
-
-    @Override
-    public boolean attackDelay() {
-        return false;
     }
 
     @Override

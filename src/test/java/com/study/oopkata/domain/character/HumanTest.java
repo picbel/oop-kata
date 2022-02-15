@@ -54,4 +54,18 @@ class HumanTest {
         assertThat(human.getAttackDmg()).isEqualTo(110);
 
     }
+
+    @DisplayName("Human 캐릭터 레벨업")
+    @Test
+    void levelUp() throws Exception {
+        //given
+        int level = 1;
+        Human human = new Human(level,new ShortSword());
+        //when
+        human.levelUp(1);
+        //then
+        assertThat(human.getLevel()).isEqualTo(2);
+        assertThat(human.getHp()).isEqualTo(2000);
+        assertThat(human.getAttackDmg()).isEqualTo(210);
+    }
 }

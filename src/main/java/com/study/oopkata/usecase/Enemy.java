@@ -16,11 +16,6 @@ public class Enemy implements Behavior{
     }
 
     @Override
-    public boolean attackDelay() {
-        return false;
-    }
-
-    @Override
     public void beHit(int attackerDamage) {
         monster.minusHp(calculateDamage(attackerDamage, monster));
     }

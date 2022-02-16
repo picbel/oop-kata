@@ -72,9 +72,28 @@ class PlayerTest {
 
     }
 
-    @DisplayName("플레이어 몬스터 공격시 반격")
+    @DisplayName("플레이어 몬스터 공격, 몬스터 사망")
     @Test
     void attack() throws Exception {
+        //given
+        Human human = new Human(10, new ShortSword());
+        Slime slime = spy(new Slime(1));
+
+        Player player =  spy(new Player(human));
+        Enemy enemy = new Enemy(slime);
+
+        //when
+        player.attackEnemy(enemy);
+
+        //then
+        assertThat(human.getLevel()).isEqualTo(11);
+        assertThat(slime.isDie()).isTrue();
+
+    }
+
+    @DisplayName("플레이어 몬스터 공격시 반격")
+    @Test
+    void attack_2() throws Exception {
         //given
         Human human = new Human(1, new ShortSword());
         Slime slime = spy(new Slime(1));
@@ -99,7 +118,7 @@ class PlayerTest {
 
     @DisplayName("플레이어 공격 대기시간 확인")
     @Test
-    void attack_2() throws Exception {
+    void attack_3() throws Exception {
         //given
         Human human = new Human(1, new ShortSword());
         Slime slime = spy(new Slime(1));
@@ -119,4 +138,5 @@ class PlayerTest {
         assertThat(human.getHp()).isEqualTo(1000);
 
     }
+
 }

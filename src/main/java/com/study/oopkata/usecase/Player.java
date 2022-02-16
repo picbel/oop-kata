@@ -53,14 +53,14 @@ public class Player implements Behavior{
         return LocalDateTime.now().isAfter(nextAttackTime);
     }
 
-    public void attackEnemy(Enemy enemy){
+    public void attackEnemy(Enemy enemy) throws Exception {
         if(isAttack()){
             log.info("===== 플레이어가 몬스터({})를 공격 하였습니다. =====",enemy.getMonster().getRace());
             attackLog.offerLast(LocalDateTime.now());
             enemy.beHit(characters.getAttackDmg());
             if (enemy.getMonster().isCounter()){
                 log.info("===== 몬스터({})가 반격하였습니다. =====",enemy.getMonster().getRace());
-                this.beHit(enemy.getMonster().getCountAttackDamage());
+                enemy.counterAttackPlayer(this);
             }
             if (enemy.getMonster().isDie()){
                 characters.levelUp(1);

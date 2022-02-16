@@ -8,8 +8,6 @@ import com.study.oopkata.usecase.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.spy;
@@ -18,7 +16,7 @@ class Action {
 
     // 캐릭터는 무기를 착용하여 몬스터에게 공격 할 수 있다.
     // 캐릭터는 공격 후에는 공격속도에 따라 딜레이가 발생한다.
-    @DisplayName("Action 플레이어 몬스터 공격, 공격 딜레이 확인")
+    @DisplayName("Action1 플레이어 몬스터 공격, 공격 딜레이 확인")
     @Test
     void action1() throws Exception {
         //given
@@ -45,7 +43,7 @@ class Action {
 
 
     // 몬스터 또한 캐릭터를 공격할 수 있다.
-    @DisplayName("Action 플레이어 몬스터 공격시 반격")
+    @DisplayName("Action2 플레이어 몬스터 공격시 반격")
     @Test
     void action2() throws Exception {
         //given
@@ -71,7 +69,7 @@ class Action {
     }
 
     // 공격 또는 반격시(몬스터) 대상의 회피율에 따라 무시될 수 있다
-    @DisplayName("Action 플레이어 몬스터 반격 회피")
+    @DisplayName("Action3 플레이어 몬스터 반격 회피")
     @Test
     void action3() throws Exception {
         //given

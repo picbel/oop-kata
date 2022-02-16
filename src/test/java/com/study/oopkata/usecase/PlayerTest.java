@@ -5,14 +5,11 @@ import com.study.oopkata.domain.character.weapon.sword.ShortSword;
 import com.study.oopkata.domain.monster.Slime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.spy;
 
-@ExtendWith(MockitoExtension.class)
 class PlayerTest {
 
     @DisplayName("데미지 계산 테스트")

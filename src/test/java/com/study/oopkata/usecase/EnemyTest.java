@@ -5,15 +5,12 @@ import com.study.oopkata.domain.character.weapon.sword.ShortSword;
 import com.study.oopkata.domain.monster.Slime;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.spy;
 
-@ExtendWith(MockitoExtension.class)
 class EnemyTest {
 
     @DisplayName("슬라임 피격 테스트")

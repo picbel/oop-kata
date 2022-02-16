@@ -15,7 +15,7 @@ import java.util.Objects;
 @Getter
 public abstract class Characters extends Stat {
 
-    protected double attackSpeed;
+    protected double attackSpeed; // 1초당 공격횟수 ex 공격속도가 1일시 1초에 1대씩 공격 가능
     protected double evasionRate;
     protected Weapon weapon;
     protected Skills skill;

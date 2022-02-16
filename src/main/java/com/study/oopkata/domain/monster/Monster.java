@@ -15,7 +15,7 @@ public abstract class Monster extends Stat {
     }
 
     public boolean isCounter(){
-        return RandomEventUtil.randomEventResult(countAttackRate);
+        return !isDie() && RandomEventUtil.randomEventResult(countAttackRate);
     }
 
     public int getCountAttackDamage(){

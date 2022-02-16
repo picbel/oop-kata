@@ -46,7 +46,7 @@ class EnemyTest {
                 .willReturn(false);
 
         //when
-        enemy.attack(player);
+        enemy.attackPlayer(player);
 
         //then
         assertThat(human.getHp()).isEqualTo(750);

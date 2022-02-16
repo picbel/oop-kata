@@ -52,7 +52,27 @@ class PlayerTest {
 
     }
 
-    @DisplayName("플레이어 몬스터 공격시 반격 테스트")
+    @DisplayName("플레이어 피격 회피")
+    @Test
+    void beHit_2() throws Exception {
+        //given
+        Human human = new Human(1, new ShortSword());
+        Slime slime = new Slime(1);
+
+        Player player = spy(new Player(human));
+
+        given(player.isAttackMiss())
+                .willReturn(true);
+
+        //when
+        player.beHit(slime.getAttackDmg());
+
+        //then
+        assertThat(human.getHp()).isEqualTo(1000);
+
+    }
+
+    @DisplayName("플레이어 몬스터 공격시 반격")
     @Test
     void attack() throws Exception {
         //given
@@ -69,7 +89,7 @@ class PlayerTest {
                 .willReturn(false);
 
         //when
-        player.attack(enemy);
+        player.attackEnemy(enemy);
 
         //then
         assertThat(slime.getHp()).isEqualTo(20);
@@ -77,4 +97,26 @@ class PlayerTest {
 
     }
 
+    @DisplayName("플레이어 공격 대기시간 확인")
+    @Test
+    void attack_2() throws Exception {
+        //given
+        Human human = new Human(1, new ShortSword());
+        Slime slime = spy(new Slime(1));
+
+        Player player =  spy(new Player(human));
+        Enemy enemy = new Enemy(slime);
+
+        given(slime.isCounter())
+                .willReturn(false);
+
+        //when
+        player.attackEnemy(enemy);
+        player.attackEnemy(enemy);
+
+        //then
+        assertThat(slime.getHp()).isEqualTo(20);
+        assertThat(human.getHp()).isEqualTo(1000);
+
+    }
 }

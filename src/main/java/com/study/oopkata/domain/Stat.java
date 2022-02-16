@@ -28,5 +28,9 @@ public abstract class Stat {
         this.mp -= minus;
     }
 
+    public boolean isDie(){
+        return hp <= 0;
+    }
+
 
 }

@@ -43,6 +43,7 @@ public class Player implements Behavior{
         if (Objects.nonNull(dateTime)) {
             return dateTime.plusSeconds(second).plusNanos(nanoSecond);
         }else {
+            // 여기서 쓰로우 ??
             return LocalDateTime.now();
         }
     }
@@ -67,7 +68,7 @@ public class Player implements Behavior{
                 log.info("===== LEVEL UP  플레이어 level = {} =====",characters.getLevel());
             }
         }else {
-            log.info("===== 공격 대기시간 입니다. 딜레이 종료 시간 {} =====",attackLog.peekLast());
+            log.info("===== 공격 대기시간 입니다. 딜레이 종료 시간 {} =====",calculateNextAttackTime(characters));
         }
     }
 
